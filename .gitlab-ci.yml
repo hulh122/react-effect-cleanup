@@ -2,6 +2,10 @@ stages:
     - lint
     - test
 
+cache:
+  paths:
+    - node_module
+
 .rules:merge-request:
     rules:
         - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $WK_CI_CUSTOM_PIPELINE == null
