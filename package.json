@@ -7,6 +7,7 @@
         "lint": "eslint .",
         "dev": "pnpm -F playground dev",
         "build:lib": "pnpm -F effect-controller build",
+        "test": "pnpm test:lib && pnpm test:pg",
         "test:lib": "pnpm -F effect-controller test:run",
         "test:pg": "pnpm -F playground test:run"
     },
