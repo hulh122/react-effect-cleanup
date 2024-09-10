@@ -40,4 +40,5 @@ test:
         - .pnpm
     needs: []
     script:
+        - pnpm build:lib
         - pnpm test
