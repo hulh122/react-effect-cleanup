@@ -16,7 +16,7 @@ stages:
 lint:
     stage: lint
     tags:
-        - generic
+        - kubernetes-runner
     extends:
         - .rules:merge-request
         - .pnpm
@@ -27,7 +27,7 @@ lint:
 test:
     stage: test
     tags:
-        - generic
+        - kubernetes-runner
     extends:
         - .rules:merge-request
         - .pnpm
