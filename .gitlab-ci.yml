@@ -1,0 +1,36 @@
+stages:
+    - lint
+    - test
+
+.rules:merge-request:
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $WK_CI_CUSTOM_PIPELINE == null
+          variables:
+              WK_CI_CHANNEL: mr
+              WK_CI_ENVIRONMENT: testing
+
+.pnpm: 
+    before_script:
+        - (http_proxy=${WK_CI_PROXY_DEFAULT} https_proxy=${WK_CI_PROXY_DEFAULT} pnpm install --loglevel=error --reporter=append-only)
+
+lint:
+    stage: lint
+    tags:
+        - generic
+    extends:
+        - .rules:merge-request
+        - .pnpm
+    needs: []
+    script:
+        - pnpm lint
+
+test:
+    stage: test
+    tags:
+        - generic
+    extends:
+        - .rules:merge-request
+        - .pnpm
+    needs: []
+    script:
+        - pnpm test
