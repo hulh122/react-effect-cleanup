@@ -17,8 +17,8 @@ cache:
     image:
         name: docker-registry.zhenguanyu.com/yuanfd/yfd_nodejs_ct8:22.4.0
     before_script:
-        - (http_proxy=${WK_CI_PROXY_DEFAULT} https_proxy=${WK_CI_PROXY_DEFAULT} npm i -g pnpm@9.9.0
-        - (http_proxy=${WK_CI_PROXY_DEFAULT} https_proxy=${WK_CI_PROXY_DEFAULT} pnpm install --loglevel=error --reporter=append-only)
+        - (http_proxy=${WK_CI_PROXY_DEFAULT} https_proxy=${WK_CI_PROXY_DEFAULT} npm i -g pnpm@9.9.0)
+        - (http_proxy=${WK_CI_PROXY_DEFAULT} https_proxy=${WK_CI_PROXY_DEFAULT} pnpm install)
 
 lint:
     stage: lint
