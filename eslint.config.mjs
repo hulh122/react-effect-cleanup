@@ -6,13 +6,16 @@ import vitest from 'eslint-plugin-vitest';
 import globals from 'globals';
 
 export default tseslint.config(
-    eslint.configs.recommended,
+    {
+        ...eslint.configs.recommended,
+        ignores: ['**/dist/**']
+    },
     {
         extends: [
             ...tseslint.configs.strictTypeChecked,
             ...tseslint.configs.stylisticTypeChecked,
         ],
-        ignores: ['dist'],
+        ignores: ['**/dist/**'],
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
             globals: globals.browser,
